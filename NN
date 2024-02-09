@@ -1,0 +1,17 @@
+fhand = input ("Enter File name: ")
+try:
+    ofhand = open (fhand)
+except:
+    print ("Coudln't find requested file...")
+    quit()
+s = 0
+n = 0
+for line in ofhand:
+    if line.startswith("X-DSPAM-Confidence:"):
+        n = n + 1
+        i = line.find('0')
+        nx = float ( line [i:len(line)])
+        s = s + nx
+    else:
+        continue
+print ("Average spam confidence:", s/n )
