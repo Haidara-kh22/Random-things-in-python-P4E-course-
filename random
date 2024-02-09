@@ -1,0 +1,13 @@
+op = open ('mbox-short.txt')
+dic = dict()
+for line in op:
+    st = line.rstrip()
+    if not st.startswith('From '): continue
+    else:
+        st1=st.split()
+        st2=st1[5]
+        st3=st2.split(':')
+        st4= st3[0]
+        dic[st4] = dic.get(st4,0) +1
+for h,c in sorted(dic.items()):
+    print (h,c)
